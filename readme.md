@@ -5,9 +5,9 @@
 A live NBA sports tracking app that tracks the game scores and other details while simultaneously tracking the games betting odds during the live games. Search for your team, find their live scores, stats, when and where they are playing.
 
 ## API used
-https://rapidapi.com/api-sports/api/api-nba/
+[NBA API](https://rapidapi.com/api-sports/api/api-nba/)
 
-https://rapidapi.com/theoddsapi/api/live-sports-odds/
+[Live Sports Odds API](https://rapidapi.com/theoddsapi/api/live-sports-odds/)
 
 ## Team Members
 - Elijah Chan
