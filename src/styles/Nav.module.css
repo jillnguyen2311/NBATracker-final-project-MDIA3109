@@ -1,0 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap');
+
+.NavContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #FC9F5B;
+    box-shadow: 0 5px 0px #00A375,
+                /* extra shadow :3*/
+                0 0 25px #000000;
+    flex-wrap: wrap;
+    font-family: 'Almarai', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
