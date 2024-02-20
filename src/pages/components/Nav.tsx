@@ -37,7 +37,7 @@ export default function Nav() {
                         <a href="#" className={styles.navlink}>Player Odds</a>
                     </li>
                     <li className={styles.navitem}>
-                        <a href="#" className={styles.navlink}>Live Games</a>
+                        <a href="/live-games" className={styles.navlink}>Live Games</a>
                     </li>
                     <li className={styles.navitem}>
                         <a href="#" className={styles.navlink}>Latest News</a>
@@ -46,7 +46,7 @@ export default function Nav() {
                         <a href="#" className={styles.navlink}>Player Stats</a>
                     </li>
                     <li className={styles.navitem}>
-                        <a href="#" className={styles.navlink}>Season Stats</a>
+                        <a href="/season-stats" className={styles.navlink}>Season Stats</a>
                     </li>
                 </ul>
                 <div className={`${styles.hamburger} ${isMenuActive ? styles.active : ''}`}>
