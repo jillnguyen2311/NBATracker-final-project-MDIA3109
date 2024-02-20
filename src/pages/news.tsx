@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Nav from './components/Nav';
 import Head from 'next/head';
+import Footer from './components/Footer';
 
 interface Article {
   title: string;
@@ -58,6 +59,7 @@ export default function News() {
           <p className="text-center">No news available</p>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

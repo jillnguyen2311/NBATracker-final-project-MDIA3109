@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Nav from './components/Nav';
 import Head from 'next/head';
+import Footer from './components/Footer';
 
 interface Team {
     TeamID: number;
@@ -63,6 +64,7 @@ const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
                     ))}
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };
