@@ -36,13 +36,13 @@ export default function Nav() {
                 </a>
                 <ul className={`${styles.navmenu} ${isMenuActive ? styles.active : ''}`}>
                     <li className={styles.navitem}>
-                        <a href="/player-odds" className={styles.navlink}>Player Odds</a>
-                    </li>
-                    <li className={styles.navitem}>
                         <a href="/live-games" className={styles.navlink}>Live Games</a>
                     </li>
                     <li className={styles.navitem}>
                         <a href="/news" className={styles.navlink}>Latest News</a>
+                    </li>
+                    <li className={styles.navitem}>
+                        <a href="/player-odds" className={styles.navlink}>Player Odds</a>
                     </li>
                     <li className={styles.navitem}>
                         <a href="/player-stats" className={styles.navlink}>Player Stats</a>
