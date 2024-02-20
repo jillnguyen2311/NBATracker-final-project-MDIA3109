@@ -36,16 +36,16 @@ export default function PlayerStats() {
 
     useEffect(() => {
         async function fetchPlayers() {
-            const options = {
-                method: 'GET',
-                url: 'https://api-nba-v1.p.rapidapi.com/players/playerId/17',
-                headers: {
-                  'X-RapidAPI-Key': '708227765cmshd45426b5899e082p15bca7jsn871aa32efb19',
-                  'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-                }
-              };
-
             try {
+                const options = {
+                    method: 'GET',
+                    url: 'https://api-nba-v1.p.rapidapi.com/players',
+                    params: {id: '1'},
+                    headers: {
+                      'X-RapidAPI-Key': '708227765cmshd45426b5899e082p15bca7jsn871aa32efb19',
+                      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+                }
+              };       
                 const response = await axios.request(options);
                 console.log(response.data);
                 setPlayers(response.data.response); 
