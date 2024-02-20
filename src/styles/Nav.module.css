@@ -6,7 +6,11 @@
 }
 
 .space{
-    margin-top: 1%;
+    background-color: #FBFFF4;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .navbar {
@@ -53,6 +57,7 @@
 
 .navlink:hover{
     color: #00A375;
+    cursor: pointer;
 }
 
 .navlogo {
@@ -67,7 +72,7 @@
         left: -100%;
         top: 5rem;
         flex-direction: column;
-        background-color: #fff;
+        background-color: #FC9F5B;
         width: 100%;
         border-radius: 10px;
         text-align: center;
