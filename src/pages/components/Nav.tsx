@@ -45,9 +45,6 @@ export default function Nav() {
                         <a href="/player-odds" className={styles.navlink}>Player Odds</a>
                     </li>
                     <li className={styles.navitem}>
-                        <a href="/player-stats" className={styles.navlink}>Player Stats</a>
-                    </li>
-                    <li className={styles.navitem}>
                         <a href="/season-stats" className={styles.navlink}>Season Stats</a>
                     </li>
                 </ul>
