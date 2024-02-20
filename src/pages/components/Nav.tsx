@@ -47,6 +47,9 @@ export default function Nav() {
                     <li className={styles.navitem}>
                         <a href="/season-stats" className={styles.navlink}>Season Stats</a>
                     </li>
+                    <li className={styles.navitem}>
+                        <a href="/player-stats" className={styles.navlink}>Player Stats</a>
+                    </li>
                 </ul>
                 <div className={`${styles.hamburger} ${isMenuActive ? styles.active : ''}`}>
                     <span className={styles.bar}></span>
