@@ -31,7 +31,9 @@ export default function Nav() {
     return (
         <nav className={styles.nav}>
             <div className={styles.navbar}>
+                <a href="/">
                 <Image className={styles.space} src="/images/OddBall.png" alt="logo" width={150} height={150} />
+                </a>
                 <ul className={`${styles.navmenu} ${isMenuActive ? styles.active : ''}`}>
                     <li className={styles.navitem}>
                         <a href="#" className={styles.navlink}>Player Odds</a>

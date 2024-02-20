@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Nav from './components/Nav';
+import Head from 'next/head';
 
 interface Team {
     TeamID: number;
@@ -44,6 +45,9 @@ export async function getStaticProps(): Promise<{ props: TeamsWithStatsProps; re
 const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
     return (
         <main>
+            <Head>
+                <title>Season Stats</title>
+            </Head>
             <Nav></Nav>
             <div className="container mx-auto p-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
