@@ -1,18 +1,106 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap');
 
-.NavContent {
+.header{
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.space{
+    margin-top: 1%;
+}
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     background-color: #FC9F5B;
+    border-bottom: 5px 0px 0px #00A375;
     box-shadow: 0 5px 0px #00A375,
                 /* extra shadow :3*/
                 0 0 25px #000000;
-    flex-wrap: wrap;
-    font-family: 'Almarai', sans-serif;
+}
+
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+.navmenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navitem {
+    margin-left: 2rem;
+}
+
+.navlink{
+    font-size: 1.4rem;
+    font-weight: "bold";
+    color: black;
+}
+
+.navlink:hover{
+    color: #00A375;
+}
+
+.navlogo {
+    font-size: 2.1rem;
     font-weight: 500;
-    font-size: 1.3rem;
+    color: #00A375;
+}
+
+@media only screen and (max-width: 961px) {
+    .navmenu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .navmenu.active {
+        left: 0;
+    }
+
+    .navitem {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+    }
 }
 
