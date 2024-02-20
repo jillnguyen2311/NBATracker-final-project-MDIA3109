@@ -37,7 +37,7 @@ export default function News() {
   }, []);
 
   return (
-    <main className="font-Almarai">
+    <main style={{ fontFamily: "Almarai, sans-serif" }}>
       <Head>
         <title>Latest News</title>
       </Head>
