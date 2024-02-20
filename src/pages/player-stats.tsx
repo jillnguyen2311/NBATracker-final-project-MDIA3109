@@ -3,14 +3,14 @@ import Nav from './components/Nav'
 import Card from './components/Card'
 import Head from 'next/head'
 
-export default function LiveGames() {
+export default function PlayerStats() {
     return (
         <main style={{ fontFamily: "Almarai, sans-serif" }}>
             <Head>
-                <title>Live Games</title>
+                <title>Player Stats</title>
             </Head>
             <Nav />
-            <h1 className="text-black text-center font-bold text-4xl py-10">Live Games</h1>
+            <h1 className="text-black text-center font-bold text-4xl py-10">Player Stats</h1>
             <Card />
         </main>
     )

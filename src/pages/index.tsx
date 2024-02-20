@@ -4,14 +4,14 @@ import Head from 'next/head'
 
 export default function Home() {
   return (
-    <body style={{ fontFamily: "Almarai, sans-serif" }}>
+    <main style={{ fontFamily: "Almarai, sans-serif" }}>
       <Head>
         <title>Home</title>
       </Head>
-      <main>
-        <Nav />
-        <h1 style={{ alignContent: "center", textAlign: "center", marginTop: "400px", fontSize: "2.9em" }}>"Your One Stop For All The Odds"</h1>
-      </main>
-    </body>
+
+      <Nav />
+      <h1 className="text-black text-center font-bold text-4xl py-10">Home</h1>
+      <h3 className="text-center mt-5 text-2xl font-bold text-black">Your One Stop For All The Odds</h3>
+    </main>
   )
 }

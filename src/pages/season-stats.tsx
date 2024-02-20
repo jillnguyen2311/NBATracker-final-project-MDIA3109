@@ -49,6 +49,7 @@ const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
                 <title>Season Stats</title>
             </Head>
             <Nav></Nav>
+            <h1 className="text-black text-center font-bold text-4xl py-10">Season Stats</h1>
             <div className="container mx-auto p-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
                     {teamsWithStats.map((team) => (
