@@ -10,7 +10,7 @@ interface PlayerStat {
   Assists: number;
   Rebounds: number;
   Steals: number;
-  Blocks: number;
+  BlockedShots: number;
 }
 
 interface TeamProps {
@@ -37,21 +37,31 @@ export async function getServerSideProps(context: { params: { team: any; }; }): 
 }
 
 const Team: React.FC<TeamProps> = ({ playerStats }) => {
+
+  const statsPerGame = playerStats.map(player => ({
+    ...player,
+    Points: player.Games > 0 ? player.Points / player.Games : 0,
+    Assists: player.Games > 0 ? player.Assists / player.Games : 0,
+    Rebounds: player.Games > 0 ? player.Rebounds / player.Games : 0,
+    Steals: player.Games > 0 ? player.Steals / player.Games : 0,
+    BlockedShots: player.Games > 0 ? player.BlockedShots / player.Games : 0,
+  }));
+
   return (
     <main>
       <Nav></Nav>
       <div className="container mx-auto p-4">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7">
-          {playerStats.map((data) => (
+          {statsPerGame.map((data) => (
             <div className="border rounded shadow" key={data.PlayerID}>
               <h3 className="text-lg text-center mt-2">{data.Name}</h3>
               <h3 className="text-lg text-center mt-2">{data.Position}</h3>
               <ul className="text-sm">
-                <li>PPG: {data.Points}</li>
-                <li>APG: {data.Assists}</li>
-                <li>RPG: {data.Rebounds}</li>
-                <li>SPG: {data.Steals}</li>
-                <li>BPG: {data.Blocks}</li>
+                <li>PPG: {data.Points.toFixed(2)}</li>
+                <li>APG: {data.Assists.toFixed(2)}</li>
+                <li>RPG: {data.Rebounds.toFixed(2)}</li>
+                <li>SPG: {data.Steals.toFixed(2)}</li>
+                <li>BPG: {data.BlockedShots.toFixed(2)}</li>
               </ul>
             </div>
           ))}
