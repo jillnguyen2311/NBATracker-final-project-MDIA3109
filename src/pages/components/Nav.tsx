@@ -50,6 +50,9 @@ export default function Nav() {
                     <li className={styles.navitem}>
                         <a href="/player-stats" className={styles.navlink}>Player Stats</a>
                     </li>
+                    <li className={styles.navitem}>
+                        <a href="/sign-up" className={styles.navlink}>Sign Up</a>
+                    </li>
                 </ul>
                 <div className={`${styles.hamburger} ${isMenuActive ? styles.active : ''}`}>
                     <span className={styles.bar}></span>
