@@ -42,13 +42,7 @@ export default function Nav() {
                         <a href="/news" className={styles.navlink}>Latest News</a>
                     </li>
                     <li className={styles.navitem}>
-                        <a href="/player-odds" className={styles.navlink}>Player Odds</a>
-                    </li>
-                    <li className={styles.navitem}>
                         <a href="/season-stats" className={styles.navlink}>Season Stats</a>
-                    </li>
-                    <li className={styles.navitem}>
-                        <a href="/player-stats" className={styles.navlink}>Player Stats</a>
                     </li>
                     <li className={styles.navitem}>
                         <a href="/sign-up" className={styles.navlink}>Sign Up</a>

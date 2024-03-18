@@ -1,0 +1,108 @@
+.hero {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative; 
+    z-index: -1;
+}
+
+.one,
+.two {
+    height: 90vh; 
+    width: calc(50% - 2.5vw); 
+    position: relative; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.one {
+    background-color: #00A375;
+    transform: skew(-30deg);
+    margin-right: 2.5vw;
+    z-index: 0; 
+}
+
+.two {
+    background-color: #FC9F5B;
+    transform: skew(-30deg);
+    margin-left: 2.5vw; 
+    z-index: 0; 
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px; 
+    height: 450px; 
+    background-color: #00A375;
+    z-index: -1;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 260px; 
+    height: 450px; 
+    background-color: #FC9F5B;
+    z-index: -1;
+}
+
+.live {
+    width: 100%;
+    background-color: #FBFFF4;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .liveText {
+    margin-bottom: 20px;
+  }
+  
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .partner {
+    width: 100%;
+    height: 220px;
+    background-color: #00A375;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .partnerName {
+    display: flex;
+    font-size: 40px;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #FBFFF4;
+  }
+
+  .contentContainer {
+    padding-left: 20px; 
+  }
+
+  @media screen and (max-width: 768px) {
+    .contentContainer {
+      padding-left: 0; 
+    }
+    .one {
+      padding: 20px; 
+    }
+    .one h1, .one p {
+      transform: none; 
+      text-align: center; 
+    }
+  }
