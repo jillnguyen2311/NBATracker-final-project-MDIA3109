@@ -100,7 +100,6 @@ const Team: React.FC<TeamProps> = ({ playerStats }) => {
                   <span>Image</span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  {/* Stats listed to the right of the image */}
                   <p>PPG: {data.Points.toFixed(2)}</p>
                   <p>APG: {data.Assists.toFixed(2)}</p>
                   <p>RPG: {data.Rebounds.toFixed(2)}</p>
