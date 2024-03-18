@@ -1,5 +1,7 @@
 import React from "react";
+import Link from "next/link";
 import Nav from "../components/Nav";
+import Footer from '../components/Footer';
 
 interface PlayerStat {
   PlayerID: number;
@@ -38,6 +40,8 @@ export async function getServerSideProps(context: { params: { team: any; }; }): 
 
 const Team: React.FC<TeamProps> = ({ playerStats }) => {
 
+  const teamLogoUrl = "path/to/your/team/logo.png";
+
   const statsPerGame = playerStats.map(player => ({
     ...player,
     Points: player.Games > 0 ? player.Points / player.Games : 0,
@@ -49,24 +53,65 @@ const Team: React.FC<TeamProps> = ({ playerStats }) => {
 
   return (
     <main>
-      <Nav></Nav>
-      <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7">
+      <Nav />
+      <div className="container mx-auto my-12 p-4">
+        <div className="flex justify-between items-center mb-12">
+          <Link href="/season-stats">
+            <div style={{
+              border: "3px solid #00A375",
+              borderRadius: "9999px",
+              width: "125px",
+              height: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#000",
+              textDecoration: "none",
+              fontWeight: "bold",
+            }}>
+              Back
+            </div>
+          </Link>
+          <img src={teamLogoUrl} alt="Team Logo" style={{ width: "300px" }} />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
           {statsPerGame.map((data) => (
-            <div className="border rounded shadow" key={data.PlayerID}>
-              <h3 className="text-lg text-center mt-2">{data.Name}</h3>
-              <h3 className="text-lg text-center mt-2">{data.Position}</h3>
-              <ul className="text-sm">
-                <li>PPG: {data.Points.toFixed(2)}</li>
-                <li>APG: {data.Assists.toFixed(2)}</li>
-                <li>RPG: {data.Rebounds.toFixed(2)}</li>
-                <li>SPG: {data.Steals.toFixed(2)}</li>
-                <li>BPG: {data.BlockedShots.toFixed(2)}</li>
-              </ul>
+            <div
+              key={data.PlayerID}
+              style={{
+                border: "4px solid #000",
+                borderRadius: "20px",
+                boxShadow: "0 7px 8px rgba(0, 0, 0, 0.3)",
+                padding: "20px",
+                backgroundColor: "#fff",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                minWidth: "300px",
+                minHeight: "250px",
+              }}
+            >
+              <h3 className="text-lg text-center mb-4">{data.Name}</h3>
+              <div className="flex">
+                <div style={{ width: "100px", height: "100px", marginRight: "20px", backgroundColor: "#DDD", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {/* Placeholder for player headshots */}
+                  <span>Image</span>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <p>PPG: {data.Points.toFixed(2)}</p>
+                  <p>APG: {data.Assists.toFixed(2)}</p>
+                  <p>RPG: {data.Rebounds.toFixed(2)}</p>
+                  <p>SPG: {data.Steals.toFixed(2)}</p>
+                  <p>BPG: {data.BlockedShots.toFixed(2)}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
+      <Footer />
     </main>
   );
 };

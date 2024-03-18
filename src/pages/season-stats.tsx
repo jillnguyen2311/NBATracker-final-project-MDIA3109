@@ -32,7 +32,7 @@ export async function getStaticProps(): Promise<{ props: TeamsWithStatsProps; re
         const stats = teamStats.find((stat: { TeamID: any; }) => stat.TeamID === team.TeamID);
         return {
             ...team,
-            Conference: team.Conference, // Assuming this data is available from your API
+            Conference: team.Conference,
             Wins: stats?.Wins || 0,
             Losses: stats?.Losses || 0,
         };
@@ -45,25 +45,48 @@ export async function getStaticProps(): Promise<{ props: TeamsWithStatsProps; re
 }
 
 const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
-    // Separate teams by conference
-    const westTeams = teamsWithStats.filter(team => team.Conference === 'West');
-    const eastTeams = teamsWithStats.filter(team => team.Conference === 'East');
 
-    // Render teams by conference
-    const renderTeams = (teams: Team[]) => (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+    const westTeams = teamsWithStats.filter(team => team.Conference === 'Western')
+        .sort((a, b) => b.Wins - a.Wins);
+    const eastTeams = teamsWithStats.filter(team => team.Conference === 'Eastern')
+        .sort((a, b) => b.Wins - a.Wins);
+
+    const renderTeams = (teams: Team[], conference: 'Western' | 'Eastern') => (
+        <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 2xl:grid-cols-2 gap-16">
             {teams.map((team) => (
-                <Link href={`/team/${team.Key}`} key={team.TeamID}>
-                    <a className="p-4 hover:shadow-lg" style={{
+                <Link href={`/team/${team.Key}`} key={team.TeamID} passHref>
+                    <div className="block hover:shadow-lg" style={{
                         backgroundColor: "#fff",
-                        border: "4px solid #00A375",
+                        border: `4px solid ${conference === 'Eastern' ? '#FC9F5B' : '#00A375'}`,
                         borderRadius: "20px",
-                        boxShadow: "0 7px 8px rgba(0, 0, 0, 0.3)"
+                        boxShadow: "0 7px 8px rgba(0, 0, 0, 0.3)",
+                        width: "350px",
+                        height: "250px",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        padding: "20px",
                     }}>
-                        <img src={team.WikipediaLogoUrl} alt={team.Name} className="h-20 mx-auto" />
-                        <h2 className="text-lg text-center mt-2">{team.City} {team.Name}</h2>
-                        <p className="text-sm text-center">Wins: {team.Wins} | Losses: {team.Losses}</p>
-                    </a>
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            gap: '6px'
+                        }}>
+                            <h2 className="text-lg font-semibold text-center mb-4">{team.City}</h2>
+                            <h2 className="text-lg font-semibold text-center mb-4">{team.Name}</h2>
+                        </div>
+                        <div className="flex flex-row items-center justify-start" style={{ width: "100%" }}>
+                            <img src={team.WikipediaLogoUrl} alt={team.Name} style={{ width: "120px", marginRight: "40px" }} />
+                            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "8px" }}>
+                                <p className="text-sm">Wins: {team.Wins}</p>
+                                <p className="text-sm">Losses: {team.Losses}</p>
+                                <p className="text-sm">Top Player: TBD</p>
+                            </div>
+                        </div>
+                        <p className="text-xs text-center" style={{ marginTop: "auto", color: "#595959", width: "100%" }}>
+                            Click for more detailed stats
+                        </p>
+                    </div>
                 </Link>
             ))}
         </div>
@@ -74,17 +97,16 @@ const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
             <Head>
                 <title>Season Stats</title>
             </Head>
-            <Nav></Nav>
-            <div className="container mx-auto p-4 my-8">
-                <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+            <Nav />
+            <div className="container mx-auto p-4 my-12">
+                <div className="flex flex-col md:flex-row justify-center items-center gap-20">
                     <div>
-                        <h2 className="text-5xl font-bold text-center mb-4" style={{ color: "#595959" }}>WEST</h2>
-                        {renderTeams(westTeams)}
+                        <h2 className="text-5xl font-bold text-center mb-10" style={{ color: "#595959" }}>WEST</h2>
+                        {renderTeams(westTeams, 'Western')}
                     </div>
-                    <div style={{ backgroundColor: "#595959", width: "2px", height: "100%" }}></div>
                     <div>
-                        <h2 className="text-5xl font-bold text-center mb-4" style={{ color: "#595959" }}>EAST</h2>
-                        {renderTeams(eastTeams)}
+                        <h2 className="text-5xl font-bold text-center mb-10" style={{ color: "#595959" }}>EAST</h2>
+                        {renderTeams(eastTeams, 'Eastern')}
                     </div>
                 </div>
             </div>
