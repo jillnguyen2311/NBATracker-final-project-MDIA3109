@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Nav from './components/Nav';
+import Head from 'next/head';
+import Footer from './components/Footer';
 
 interface Team {
     TeamID: number;
@@ -69,7 +71,10 @@ const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
 
     return (
         <main>
-            <Nav />
+            <Head>
+                <title>Season Stats</title>
+            </Head>
+            <Nav></Nav>
             <div className="container mx-auto p-4 my-8">
                 <div className="flex flex-col md:flex-row justify-center items-center gap-8">
                     <div>
@@ -83,6 +88,7 @@ const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };
