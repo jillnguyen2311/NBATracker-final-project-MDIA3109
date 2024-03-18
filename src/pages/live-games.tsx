@@ -6,99 +6,102 @@ import Footer from './components/Footer';
 import Card from './components/Card';
 
 interface Game {
-    id: number;
-    league: string;
-    season: number;
-    date: {
-        start: string;
-        end: string;
-    };
-    duration: string;
-    stage: number;
-    status: {
-        clock: string | null;
-        halftime: boolean;
-        short: number;
-        long: string;
-        periods: {
-            current: number;
-            total: number;
-            endOfPeriod: boolean;
-        };
-    };
-    arena: {
-        name: string;
-        city: string;
-        state: string;
-        country: string;
-    };
-    teams: {
-        visitors: {
-            id: number;
-            name: string;
-            nickname: string;
-            code: string;
-            logo: string;
-            scores: {
-                win: number;
-                loss: number;
-                series: {
-                    win: number;
-                    loss: number;
-                };
-                linescore: string[];
-                points: number;
-            };
-        };
-        home: {
-            id: number;
-            name: string;
-            nickname: string;
-            code: string;
-            logo: string;
-            scores: {
-                win: number;
-                loss: number;
-                series: {
-                    win: number;
-                    loss: number;
-                };
-                linescore: string[];
-                points: number;
-            };
-        };
-    };
-    officials: string[];
-    timesTied: number;
-    leadChanges: number;
-    nugget: string | null;
+    GameID: number;
+    Season: number;
+    SeasonType: number;
+    Status: string;
+    Day: string;
+    DateTime: string;
+    AwayTeam: string;
+    HomeTeam: string;
+    AwayTeamID: number;
+    HomeTeamID: number;
+    StadiumID: number;
+    Channel: string;
+    Attendance: null | number;
+    AwayTeamScore: null | number;
+    HomeTeamScore: null | number;
+    Updated: string;
+    Quarter: null | number;
+    TimeRemainingMinutes: null | number;
+    TimeRemainingSeconds: null | number;
+    PointSpread: number;
+    OverUnder: number;
+    AwayTeamMoneyLine: number;
+    HomeTeamMoneyLine: number;
+    GlobalGameID: number;
+    GlobalAwayTeamID: number;
+    GlobalHomeTeamID: number;
+    PointSpreadAwayTeamMoneyLine: number;
+    PointSpreadHomeTeamMoneyLine: number;
+    LastPlay: string;
+    IsClosed: boolean;
+    GameEndDateTime: null | string;
+    HomeRotationNumber: number;
+    AwayRotationNumber: number;
+    NeutralVenue: boolean;
+    OverPayout: number;
+    UnderPayout: number;
+    CrewChiefID: number;
+    UmpireID: number;
+    RefereeID: number;
+    AlternateID: null | number;
+    DateTimeUTC: string;
+}
+
+interface Team {
+    TeamID: number;
+    Key: string;
+    WikipediaLogoUrl: string;
 }
 
 export default function LiveGames() {
     const [games, setGames] = useState<Game[]>([]);
+    const [teamLogos, setTeamLogos] = useState<{ [key: string]: string }>({});
+    const [isLive, setIsLive] = useState(false);
 
     useEffect(() => {
-        async function fetchLiveGames() {
-            const options = {
-                method: 'GET',
-                url: 'https://api-nba-v1.p.rapidapi.com/games',
-                params: { live: 'all' },
-                headers: {
-                    'X-RapidAPI-Key': '708227765cmshd45426b5899e082p15bca7jsn871aa32efb19',
-                    'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-                }
-            };
+        const fetchGamesForToday = async () => {
+            const today = new Date().toISOString().slice(0, 10); // Gets date in YYYY-MM-DD format
+            const formattedDate = today.toUpperCase().replace('-', '-').replace('-', '-'); // Ensure the format matches API requirements if needed
+
+            const url = `https://api.sportsdata.io/v3/nba/scores/json/GamesByDate/${formattedDate}?key=8510cb2ee7e843c18bb57dda092bc77a`;
 
             try {
-                const response = await axios.request(options);
+                const response = await axios.get(url);
                 console.log(response.data);
                 setGames(response.data);
             } catch (error) {
-                console.error('Error fetching live games:', error);
+                console.error('Error fetching games for today:', error);
             }
-        }
+        };
 
-        fetchLiveGames();
+        const fetchTeamLogos = async () => {
+            const resTeams = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=8510cb2ee7e843c18bb57dda092bc77a');
+            const teams: Team[] = await resTeams.json();
+
+            const logos = teams.reduce((acc: { [key: string]: string }, team) => {
+                acc[team.TeamID] = team.WikipediaLogoUrl;
+                return acc;
+            }, {});
+
+            setTeamLogos(logos);
+        };
+
+        const checkLiveGames = async () => {
+            try {
+              const response = await axios.get('https://api.sportsdata.io/v3/nba/scores/json/AreAnyGamesInProgress?key=8510cb2ee7e843c18bb57dda092bc77a');
+              setIsLive(response.data);
+            } catch (error) {
+              console.error('Error checking live games:', error);
+            }
+          };
+
+        fetchGamesForToday();
+        fetchTeamLogos();
+        const liveGamesCheckInterval = setInterval(checkLiveGames, 5000);
+
+        return () => clearInterval(liveGamesCheckInterval);
     }, []);
 
     return (
@@ -107,24 +110,28 @@ export default function LiveGames() {
                 <title>Live Games</title>
             </Head>
             <Nav />
-            <h1 className="text-black text-center font-bold text-4xl py-10">Live Games</h1>
-            <Card/>
+            <h1 className="text-black text-center font-bold text-4xl py-10">Live and Upcoming Games</h1>
 
-            <div>
-                {games.length > 0 ? (
-                    games.map((game, index) => (
-                        <div key={index} className="border-4 border-green-500 rounded-lg shadow-md p-4 mb-4">
-                            <h2 className="text-xl font-semibold">{game.teams.visitors.name} vs {game.teams.home.name}</h2>
-                            <p>Date: {new Date(game.date.start).toLocaleDateString()}</p>
-                            <p>Time: {new Date(game.date.start).toLocaleTimeString()}</p>
-                            <p>Arena: {game.arena.name}, {game.arena.city}, {game.arena.state}, {game.arena.country}</p>
-                            <p>Status: {game.status.long}</p>
-                            <p>Scores: {game.teams.visitors.scores.points} - {game.teams.home.scores.points}</p>
+            <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-12 mx-20 my-20">
+                {games.map((game) => (
+                   <div key={game.GameID} className={`border-4 ${isLive ? 'border-00A375' : 'border-FC9F5B'} border-FC9F5B rounded-lg shadow-lg p-6 bg-white flex flex-col items-center text-center gap-4`} style={{ width: "100%", justifyContent: "space-evenly"}}>
+                        <div className="flex items-center justify-center gap-24 font-bold text-xl">
+                            <span className="px-3 py-1 bg-FC9F5B rounded-full" style={{ borderRadius: '400px', fontSize: '18px' }}>{game.HomeTeamMoneyLine}</span>
+                            <span style={{ fontSize: '20px', fontWeight: 'bold' }}>ODDS</span>
+                            <span className={`px-3 py-1 ${isLive ? 'bg-00A375' : 'bg-FC9F5B'} rounded-full`} style={{ borderRadius: '400px', fontSize: '18px' }}>{game.AwayTeamMoneyLine}</span>
                         </div>
-                    ))
-                ) : (
-                    <p className="text-center">No live games available</p>
-                )}
+                        <div className="flex items-center justify-center gap-20 my-2">
+                            <img src={teamLogos[game.HomeTeamID]} alt="Home Team" className="w-24 h-24" />
+                            <span style={{ fontSize: '24px', fontWeight: 'bold' }}>VS</span>
+                            <img src={teamLogos[game.AwayTeamID]} alt="Away Team" className="w-24 h-24" />
+                        </div>
+                        <div className="flex items-center justify-center gap-24 font-bold text-4xl">
+                            <span>{game.HomeTeam}</span>
+                            <span></span>
+                            <span>{game.AwayTeam}</span>
+                        </div>
+                    </div>
+                ))}
             </div>
 
             <Footer />
