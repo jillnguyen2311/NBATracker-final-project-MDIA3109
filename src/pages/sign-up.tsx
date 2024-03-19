@@ -12,9 +12,7 @@ export default function PlayerOdds() {
 
             <Nav />
             <h1 className="text-black text-center font-bold text-4xl py-10"></h1>
-
-
-            <section className="text--[#595959] body-font">
+            <section className="text-[#595959] body-font">
                 <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
                     <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
                         <h1 className="title-font font-medium text-4xl text-[#595959]">Keep up to date on NBA with everything OddBall.</h1>
