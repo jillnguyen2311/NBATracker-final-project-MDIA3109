@@ -63,7 +63,7 @@ export default function LiveGames() {
     useEffect(() => {
         const fetchGamesForToday = async () => {
             const today = new Date().toISOString().slice(0, 10);
-            const formattedDate = today.toUpperCase().replace('-', '-').replace('-', '-'); 
+            const formattedDate = today.toUpperCase().replace('-', '-').replace('-', '-');
 
             const url = `https://api.sportsdata.io/v3/nba/scores/json/GamesByDate/${formattedDate}?key=8510cb2ee7e843c18bb57dda092bc77a`;
 
@@ -77,25 +77,32 @@ export default function LiveGames() {
         };
 
         const fetchTeamLogos = async () => {
-            const resTeams = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=8510cb2ee7e843c18bb57dda092bc77a');
-            const teams: Team[] = await resTeams.json();
+            try {
+                const response = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=8510cb2ee7e843c18bb57dda092bc77a');
+                const teams = await response.json();
 
-            const logos = teams.reduce((acc: { [key: string]: string }, team) => {
-                acc[team.TeamID] = team.WikipediaLogoUrl;
-                return acc;
-            }, {});
-
-            setTeamLogos(logos);
+                if (Array.isArray(teams)) {
+                    const logos = teams.reduce((acc: { [key: string]: string }, team: any) => {
+                        acc[team.Key] = team.WikipediaLogoUrl; // Use 'Key' if it's unique for each team
+                        return acc;
+                    }, {});
+                    setTeamLogos(logos);
+                } else {
+                    throw new Error('Teams data is not an array');
+                }
+            } catch (error) {
+                console.error('Error fetching team logos:', error);
+            }
         };
 
         const checkLiveGames = async () => {
             try {
-              const response = await axios.get('https://api.sportsdata.io/v3/nba/scores/json/AreAnyGamesInProgress?key=8510cb2ee7e843c18bb57dda092bc77a');
-              setIsLive(response.data);
+                const response = await axios.get('https://api.sportsdata.io/v3/nba/scores/json/AreAnyGamesInProgress?key=8510cb2ee7e843c18bb57dda092bc77a');
+                setIsLive(response.data);
             } catch (error) {
-              console.error('Error checking live games:', error);
+                console.error('Error checking live games:', error);
             }
-          };
+        };
 
         fetchGamesForToday();
         fetchTeamLogos();
@@ -114,16 +121,16 @@ export default function LiveGames() {
 
             <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-12 mx-10 my-20">
                 {games.map((game) => (
-                   <div key={game.GameID} className={`border-4 ${isLive ? 'border-00A375' : 'border-FC9F5B'} border-FC9F5B rounded-lg shadow-lg p-6 bg-white flex flex-col items-center text-center gap-4`} style={{ width: "100%", justifyContent: "space-evenly"}}>
+                    <div key={game.GameID} className={`border-4 ${isLive ? 'border-00A375' : 'border-FC9F5B'} border-FC9F5B rounded-lg shadow-lg p-6 bg-white flex flex-col items-center text-center gap-4`} style={{ width: "100%", justifyContent: "space-evenly" }}>
                         <div className="flex items-center justify-center gap-8 sm:gap-24 font-bold text-xl">
                             <span className="px-3 py-1 bg-FC9F5B rounded-full" style={{ borderRadius: '400px', fontSize: '18px' }}>{game.HomeTeamMoneyLine}</span>
                             <span style={{ fontSize: '20px', fontWeight: 'bold' }}>ODDS</span>
                             <span className={`px-3 py-1 ${isLive ? 'bg-00A375' : 'bg-FC9F5B'} rounded-full`} style={{ borderRadius: '400px', fontSize: '18px' }}>{game.AwayTeamMoneyLine}</span>
                         </div>
                         <div className="flex items-center justify-center gap-4 sm:gap-20 my-2">
-                            <img src={teamLogos[game.HomeTeamID]} alt="Home Team" className="w-24 h-24" />
+                            <img src={teamLogos[game.HomeTeam]} alt="Home Team" className="w-24 h-24" />
                             <span style={{ fontSize: '24px', fontWeight: 'bold' }}>VS</span>
-                            <img src={teamLogos[game.AwayTeamID]} alt="Away Team" className="w-24 h-24" />
+                            <img src={teamLogos[game.AwayTeam]} alt="Away Team" className="w-24 h-24" />
                         </div>
                         <div className="flex items-center justify-center gap-10 sm:gap-24 font-bold text-4xl">
                             <span>{game.HomeTeam}</span>
