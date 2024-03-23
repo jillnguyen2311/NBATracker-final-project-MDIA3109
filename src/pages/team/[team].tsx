@@ -15,32 +15,37 @@ interface PlayerStat {
   BlockedShots: number;
 }
 
-interface TeamProps {
-  playerStats: PlayerStat[];
+interface Team {
+  Key: string;
+  WikipediaLogoUrl: string;
 }
 
-export async function getServerSideProps(context: { params: { team: any; }; }): Promise<{ props: TeamProps }> {
+export async function getServerSideProps(context: { params: { team: string; }; }): Promise<{ props: TeamProps & { teamLogoUrl: string } }> {
   const { team } = context.params;
   const season = new Date().getFullYear();
-  console.log(season);
+
+  const resTeams = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=8510cb2ee7e843c18bb57dda092bc77a');
+  const teams = await resTeams.json() as Team[];
+
+  const teamInfo = teams.find(t => t.Key === team);
 
   const resPlayerStats = await fetch(`https://api.sportsdata.io/v3/nba/stats/json/PlayerSeasonStatsByTeam/${season}/${team}?key=8510cb2ee7e843c18bb57dda092bc77a`);
-  const data = await resPlayerStats.json();
-
-  console.log(data);
-
-  const playerStats = Array.isArray(data) ? data : [];
+  const playerStats: PlayerStat[] = await resPlayerStats.json();
 
   return {
     props: {
       playerStats,
+      teamLogoUrl: teamInfo?.WikipediaLogoUrl || '',
     },
   };
 }
 
-const Team: React.FC<TeamProps> = ({ playerStats }) => {
+interface TeamProps {
+  playerStats: PlayerStat[];
+  teamLogoUrl: string;
+}
 
-  const teamLogoUrl = "path/to/your/team/logo.png";
+const Team: React.FC<TeamProps> = ({ playerStats, teamLogoUrl }) => {
 
   const statsPerGame = playerStats.map(player => ({
     ...player,
@@ -63,6 +68,8 @@ const Team: React.FC<TeamProps> = ({ playerStats }) => {
               width: "125px",
               height: "50px",
               display: "flex",
+              backgroundColor: "white",
+              boxShadow: "3px 3px 5px 0px rgb(0, 0, 0, 0.3)",
               alignItems: "center",
               justifyContent: "center",
               color: "#000",
@@ -72,7 +79,7 @@ const Team: React.FC<TeamProps> = ({ playerStats }) => {
               Back
             </div>
           </Link>
-          <img src={teamLogoUrl} alt="Team Logo" style={{ width: "300px" }} />
+          <img src={teamLogoUrl} alt="Team Logo" style={{ width: "150px" }} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
