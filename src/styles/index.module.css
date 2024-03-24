@@ -106,6 +106,19 @@
   transform: skew(30deg);
 }
 
+@keyframes slideRightToLeft {
+  from {
+    transform: skew(30deg) translateX(100%);
+  }
+  to {
+    transform: skew(30deg) translateX(0);
+  }
+}
+
+.animation {
+  animation: slideRightToLeft 2s ease-in-out;
+}
+
 @media screen and (max-width: 768px) {
   /* Ensure full width for all parent elements */
   .hero,

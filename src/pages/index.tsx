@@ -29,7 +29,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.two}>
-          <img src="/images/nikola.png" alt="Player Nikola" className={styles.playerImage} />
+          <img src="/images/nikola.png" alt="Player Nikola" className={`${styles.playerImage} ${styles.animation}`} />
         </div>
       </div>
 
