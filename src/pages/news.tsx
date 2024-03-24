@@ -23,7 +23,7 @@ export default function News() {
           url: apiUrl,
           params: {
             recentNews: 'true',
-            maxItems: '10'
+            maxItems: '20'
           },
           headers: {
             'X-RapidAPI-Key': rapidApiKey,
