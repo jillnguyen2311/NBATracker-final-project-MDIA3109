@@ -60,7 +60,7 @@ export default function News() {
         <title>Latest News</title>
       </Head>
       <Nav />
-      <h1 className="text-black text-center font-bold text-4xl py-10">Latest News</h1>
+      <h1 className="text-black text-center font-bold text-4xl py-10 mb-10">Latest News</h1>
       <div className="mx-auto max-w-4xl mb-8">
         {news.length > 0 ? (
           news.map((article, index) => (

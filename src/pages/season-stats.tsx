@@ -98,6 +98,7 @@ const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
                 <title>Season Stats</title>
             </Head>
             <Nav />
+            <h1 className="text-black text-center font-bold text-4xl py-10 mb-10">Season Stats</h1>
             <div className="container mx-auto p-4 my-12">
                 <div className="flex flex-col md:flex-row justify-center items-center gap-20">
                     <div className="w-full md:w-auto xl:w-auto">

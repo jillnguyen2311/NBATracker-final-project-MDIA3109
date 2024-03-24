@@ -7,11 +7,11 @@ export default function PlayerOdds() {
     return (
         <main style={{ fontFamily: "Almarai, sans-serif"}}>
             <Head>
-                <title>Sign Up</title>
+                <title>Sign Up / Log In</title>
             </Head>
 
             <Nav />
-            <h1 className="text-black text-center font-bold text-4xl py-10">Sign Up / Log In</h1>
+            <h1 className="text-black text-center font-bold text-4xl py-10 mb-10">Sign Up / Log In</h1>
             <section className="text-[#595959] body-font">
                 <div className="container px-10 py-15 mx-auto mb-20 flex flex-wrap items-center justify-content">
                     <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
