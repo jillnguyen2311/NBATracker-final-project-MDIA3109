@@ -31,7 +31,7 @@ export default function Nav() {
     return (
         <nav className={styles.nav}>
             <div className={styles.navbar}>
-                <a href="/">
+                <a href="/home">
                 <Image className={styles.space} src="/images/OddBall.png" alt="logo" width={150} height={150} />
                 </a>
                 <ul className={`${styles.navmenu} ${isMenuActive ? styles.active : ''}`}>
@@ -47,7 +47,7 @@ export default function Nav() {
                     <li className={styles.navitem}>
                         <a href="/about" className={styles.navlink}>About</a>
                     </li>
-                    <li className={styles.navitem}>
+                    <li className={styles.signup}>
                         <a href="/sign-up" className={styles.navlink}>Sign Up</a>
                     </li>
                 </ul>
