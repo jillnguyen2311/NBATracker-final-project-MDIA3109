@@ -15,10 +15,11 @@
 
 .navbar {
     display: flex;
+    padding-bottom: 1em;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    background-color: #FBFFF4;
+    background-color: #595959;
     border-bottom: 5px 0px 0px #00A375;
     border-top: solid 5px #FC9F5B ;
     box-shadow: 0 5px 0px #00A375,
@@ -52,22 +53,50 @@
 
 .signup {
     font-size: 1.4rem;
-    font-weight: bold;
-    border: 4px solid #00A375;
     border-radius: 15px; 
     padding: 8px 12px; 
+    margin: 0 0 0 10px;
+}
+
+.premium {
+    font-size: 1.4rem;
+    border-radius: 15px; 
+    padding: 8px 16px; 
     margin: 0 0 0 10px;
 }
 
 .navlink{
     font-size: 1.4rem;
     font-weight: "bold";
+    color: rgb(223, 223, 223);
+}
+
+.navlink2{
+    font-size: 1.4rem;
+    font-weight: "bold";
+    color: gray;
+}
+
+.premium{
+    font-size: 1.4rem;
+    font-weight: 800;
     color: black;
+    background-color: #FC9F5B;
+}
+
+.premium:hover{
+    background-color: #00A375;
 }
 
 .navlink:hover{
     color: #00A375;
     cursor: pointer;
+}
+
+.navlink2:hover{
+    color: #00A375;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .navlogo {
@@ -80,9 +109,9 @@
     .navmenu {
         position: fixed;
         left: -100%;
-        top: 5rem;
+        top: 9rem;
         flex-direction: column;
-        background-color: #FBFFF4;
+        background-color: #595959;
         width: 100%;
         border-radius: 10px;
         text-align: center;
