@@ -64,7 +64,7 @@ export default function News() {
       <div className="mx-auto max-w-4xl mb-8">
         {news.length > 0 ? (
           news.map((article, index) => (
-            <div key={index} className="border-4 border-green-500 rounded-lg shadow-md p-7 mb-8">
+            <div key={index} className="border-4 border-green-500 bg-white rounded-lg shadow-md p-7 mb-8">
               <h2 className="text-2xl font-semibold text-center">{article.title}</h2>
               <img src={article.image} alt={article.title} className="mx-auto mb-4 rounded-lg" style={{ maxWidth: '100%', maxHeight: 'auto', display: 'block' }} />
               <div className="mt-8 text-center">
