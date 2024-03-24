@@ -148,3 +148,27 @@
     }
 }
 
+@media only screen and (max-width: 435px) {
+
+    .navlink2{
+        font-size: 1rem;
+        font-weight: "bold";
+        color: gray;
+    }
+
+    .signup {
+        font-size: 1rem;
+        border-radius: 15px; 
+        padding: 8px 14px; 
+        margin: 0 0 0 10px;
+        padding-bottom: 10px;
+    }
+
+    .premium{
+        font-size: 1rem;
+        font-weight: 800;
+        color: black;
+        background-color: #FC9F5B;
+    }
+
+}

@@ -35,7 +35,7 @@ export default function Nav() {
                     <a href="/home">
                         <Image className={styles.space} src="/images/OddBall.png" alt="logo" width={150} height={150} />
                     </a>
-                    <div className='absolute right-5 mb-5'>
+                    <div className='absolute right-5 mb-5 max-[435px]:pt-1'>
                     <ul className='flex flex-row right-0'>
                         <li className={styles.signup}>
                             <a href="/sign-up" className={styles.navlink2}>Sign Up</a>
