@@ -7,12 +7,12 @@ import Footer from './components/Footer';
 interface Article {
   title: string;
   url: string;
-  source: string;
+  image: string;
 }
 
 export default function News() {
   const [news, setNews] = useState<Article[]>([]);
-  const apiUrl = 'https://nba-latest-news.p.rapidapi.com/articles';
+  const apiUrl = 'https://tank01-fantasy-stats.p.rapidapi.com/getNBANews';
   const rapidApiKey = '708227765cmshd45426b5899e082p15bca7jsn871aa32efb19';
 
   useEffect(() => {
@@ -21,14 +21,31 @@ export default function News() {
         const options = {
           method: 'GET',
           url: apiUrl,
+          params: {
+            recentNews: 'true',
+            maxItems: '10'
+          },
           headers: {
             'X-RapidAPI-Key': rapidApiKey,
-            'X-RapidAPI-Host': 'nba-latest-news.p.rapidapi.com'
+            'X-RapidAPI-Host': 'tank01-fantasy-stats.p.rapidapi.com'
           }
         };
         const response = await axios.request(options);
         console.log(response.data);
-        setNews(response.data.map((item: any) => ({ title: item.title, url: item.url, source: item.source })));
+
+        const articlesArray = response.data.body;
+
+        if (Array.isArray(articlesArray)) {
+          const mappedNews: Article[] = articlesArray.map((item: any) => ({
+            title: item.title,
+            url: item.link,
+            image: item.image
+          }));
+          setNews(mappedNews);
+        } else {
+          console.error('Response body is not an array:', articlesArray);
+
+        }
       } catch (error) {
         console.error('Error fetching news:', error);
       }
@@ -44,14 +61,15 @@ export default function News() {
       </Head>
       <Nav />
       <h1 className="text-black text-center font-bold text-4xl py-10">Latest News</h1>
-      <div className="mx-24 mb-8">
+      <div className="mx-auto max-w-4xl mb-8">
         {news.length > 0 ? (
           news.map((article, index) => (
             <div key={index} className="border-4 border-green-500 rounded-lg shadow-md p-7 mb-8">
-              <h2 className="text-2xl font-semibold">{article.title}</h2>
-              <p className="text-gray-600 mt-3">Source: {article.source}</p>
-              <div className="mt-8">
-                <a href={article.url} className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Read more ➜</a> {/* Added mt-4 for top margin */}
+              <h2 className="text-2xl font-semibold text-center">{article.title}</h2>
+              <img src={article.image} alt={article.title} className="mx-auto mb-4 rounded-lg" style={{ maxWidth: '100%', maxHeight: 'auto', display: 'block' }} />
+              <div className="mt-8 text-center">
+                <p className="text-gray-800">{article.title.slice(0, 100)}...</p>
+                <a href={article.url} className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Read more ➜</a>
               </div>
             </div>
           ))
