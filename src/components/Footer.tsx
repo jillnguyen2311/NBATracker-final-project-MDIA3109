@@ -3,7 +3,9 @@ export default function Footer() {
         <footer className="bg-gray-100 border-t-4 border-orange-400">
             <div className="container mx-auto px-5 py-6 flex flex-col md:flex-row justify-between items-center">
                 {/* Logo */}
-                <a className="flex title-font font-medium items-center text-gray-900">
+                <a className="flex title-font font-medium items-center text-gray-900"
+                href='/home'
+                >
                     <img src="/images/OddBall.png" className="w-50 h-auto mr-2"></img>
                     <span className="text-3xl"></span>
                 </a>
