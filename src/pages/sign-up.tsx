@@ -5,18 +5,21 @@ import Footer from './components/Footer'
 
 export default function PlayerOdds() {
     return (
-        <main style={{ fontFamily: "Almarai, sans-serif" }}>
+        <main style={{ fontFamily: "Almarai, sans-serif"}}>
             <Head>
                 <title>Sign Up</title>
             </Head>
 
             <Nav />
-            <h1 className="text-black text-center font-bold text-4xl py-10"></h1>
+            <h1 className="text-black text-center font-bold text-4xl py-10">Sign Up / Log In</h1>
             <section className="text-[#595959] body-font">
-                <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
+                <div className="container px-10 py-15 mx-auto mb-20 flex flex-wrap items-center justify-content">
                     <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
                         <h1 className="title-font font-medium text-4xl text-[#595959]">Keep up to date on NBA with everything OddBall.</h1>
                         <p className="leading-relaxed mt-4 text-[#595959]">Never miss a thing with relevant news and insights into the all things basketball</p>
+                        <div className="flex flex-col flex-wrap items-center mt-5 justify-content">
+                        <img style={{ backgroundColor: "transparent" }} src="https://gifdb.com/images/high/basketball-nba-animation-bdib4b4p5wew9ise.gif" width={350}></img>
+                        </div>
                     </div>
                     <div className="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
                         <h2 className="text-[#595959] text-lg font-medium title-font mb-5">Sign Up</h2>
