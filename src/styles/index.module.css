@@ -1,3 +1,5 @@
+/* index.module.css */
+
 .hero {
   width: 100%;
   display: flex;
@@ -8,7 +10,7 @@
 
 .one,
 .two {
-  height: 90vh;
+  height: 100vh;
   width: calc(50% - 2.5vw);
   position: relative;
   display: flex;
@@ -56,7 +58,6 @@
   z-index: -1;
 }
 
-
 .live {
   width: 100%;
   background-color: #FBFFF4;
@@ -99,18 +100,42 @@
   padding-left: 20px;
 }
 
+.playerImage {
+  width: 60%; 
+  height: auto;
+  transform: skew(30deg);
+}
+
 @media screen and (max-width: 768px) {
-  .contentContainer {
-    padding-left: 0;
+  /* Ensure full width for all parent elements */
+  .hero,
+  .one,
+  .two,
+  .live,
+  .partner,
+  .main,
+  .header,
+  .footer
+  {
+    width: 200vw;
+    margin: 0;
+    padding: 0;
   }
 
-  .one {
-    padding: 20px;
+  .contentContainer {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center; /* Center align content on smaller screens */
   }
 
   .one h1,
   .one p {
-    transform: none;
     text-align: center;
+  }
+
+  .playerImage {
+    width: 100%; /* Make player image occupy full width */
+    max-width: 300px; /* Limit maximum width of player image */
+    margin-top: 200px; /* Add some space between image and text */
   }
 }

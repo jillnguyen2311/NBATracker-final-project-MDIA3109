@@ -1,3 +1,5 @@
+// Home.tsx
+
 import Nav from './components/Nav'
 import Head from 'next/head'
 import Footer from './components/Footer'
@@ -5,14 +7,14 @@ import styles from '../styles/index.module.css'
 import Card from './components/Card'
 
 export default function Home() {
-
   return (
     <main style={{ fontFamily: "Almarai, sans-serif" }}>
       <Head>
         <title>Home</title>
       </Head>
-
-      <Nav />
+      <div className={styles.header}>
+        <Nav />
+      </div>
 
       <div className={styles.hero}>
         <div className={styles.one}>
@@ -26,7 +28,9 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className={styles.two}></div>
+        <div className={styles.two}>
+          <img src="/images/nikola.png" alt="Player Nikola" className={styles.playerImage} />
+        </div>
       </div>
 
       <div className={styles.live}>
@@ -62,7 +66,9 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer />
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </main>
   )
 }
