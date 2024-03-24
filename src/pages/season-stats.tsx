@@ -100,11 +100,12 @@ const SeasonStats: React.FC<TeamsWithStatsProps> = ({ teamsWithStats }) => {
             <Nav />
             <div className="container mx-auto p-4 my-12">
                 <div className="flex flex-col md:flex-row justify-center items-center gap-20">
-                    <div>
+                    <div className="w-full md:w-auto xl:w-auto">
                         <h2 className="text-5xl font-bold text-center mb-10" style={{ color: "#595959" }}>WEST</h2>
-                        {renderTeams(westTeams, 'Western')}
+                        {renderTeams(westTeams
+                            , 'Western')}
                     </div>
-                    <div>
+                    <div className="w-full md:w-auto xl:w-auto">
                         <h2 className="text-5xl font-bold text-center mb-10" style={{ color: "#595959" }}>EAST</h2>
                         {renderTeams(eastTeams, 'Eastern')}
                     </div>
