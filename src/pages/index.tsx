@@ -40,7 +40,6 @@ export default function Home() {
         <div className={styles.cardContainer}>
           <Card />
           <Card />
-          <Card />
         </div>
       </div>
 
@@ -60,7 +59,6 @@ export default function Home() {
           <h1 style={{ fontSize: "50px", textAlign: "center", color: "#595959", fontWeight: "bold", marginBottom: "40px" }}>Current News</h1>
         </div>
         <div className={styles.cardContainer}>
-          <Card />
           <Card />
           <Card />
         </div>
