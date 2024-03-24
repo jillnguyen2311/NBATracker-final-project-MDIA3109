@@ -1,10 +1,10 @@
 // Home.tsx
 
-import Nav from './components/Nav'
+import Nav from '../components/Nav'
 import Head from 'next/head'
-import Footer from './components/Footer'
+import Footer from '../components/Footer'
 import styles from '../styles/index.module.css'
-import Card from './components/Card'
+import Card from '../components/Card'
 
 export default function Home() {
   return (

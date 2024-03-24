@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Nav from './components/Nav';
+import Nav from '../components/Nav';
 import Head from 'next/head';
-import Footer from './components/Footer';
+import Footer from '../components/Footer';
 
 interface Team {
     TeamID: number;

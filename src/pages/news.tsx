@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from './components/Nav';
+import Nav from '../components/Nav';
 import Head from 'next/head';
-import Footer from './components/Footer';
+import Footer from '../components/Footer';
 
 interface Article {
   title: string;

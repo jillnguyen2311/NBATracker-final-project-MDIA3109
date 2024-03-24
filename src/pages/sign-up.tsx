@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import Nav from './components/Nav'
+import Nav from '../components/Nav'
 import Head from 'next/head'
-import Footer from './components/Footer'
+import Footer from '../components/Footer'
 
 export default function PlayerOdds() {
     return (

@@ -1,4 +1,4 @@
-import styles from '../../styles/Nav.module.css'
+import styles from '@/styles/Nav.module.css'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
