@@ -5,7 +5,6 @@ import SubBanner from '../components/SubBanner';
 import NewsletterSection from '../components/NewsletterSection';
 import Nav from '../components/Nav'
 import Footer from '../components/Footer';
-import styles from '../styles/index.module.css'
 
 export default function LandingPage() {
   return (
@@ -13,10 +12,8 @@ export default function LandingPage() {
       <Head>
         <title>OddBall Landing Page</title>
       </Head>
-      <div className={styles.header}>
-        <Nav />
-      </div>
 
+      <Nav />
       <HeroSection />
 
       <div className="container mx-auto px-4 py-8 flex flex-wrap justify-center">
