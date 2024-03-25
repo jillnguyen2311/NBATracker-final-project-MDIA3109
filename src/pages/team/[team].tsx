@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Nav from "../../components/Nav";
 import Footer from '../../components/Footer';
-import { data } from "cypress/types/jquery";
 
 const lakersHeadshots: { [key: string]: string | undefined } = {
   "LeBron James": "https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png",
