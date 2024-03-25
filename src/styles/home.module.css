@@ -1,0 +1,174 @@
+.main{
+  margin: 0;
+  padding: 0;
+}
+
+.heroTextContainer {
+  z-index: -1;
+  position: absolute;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.heroText {
+  padding-left: 20px;
+}
+
+.nikola {
+  width: 700px;
+  height: 850px;
+}
+
+.hero {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  z-index: -2;
+}
+
+.one,
+.two {
+  height: 90vh;
+  width: calc(50% - 2.5vw);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.one {
+  background-color: #00a375;
+  transform: skew(-30deg);
+  margin-right: 2.5vw;
+  z-index: 0;
+}
+
+.two {
+  background-color: #fc9f5b;
+  transform: skew(-30deg);
+  margin-left: 2.5vw;
+  z-index: 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  min-width: 260px;
+  min-height: 450px;
+  height: 100%;
+  background-color: #00a375;
+  z-index: -1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15%;
+  min-width: 260px;
+  min-height: 450px;
+  height: 100%;
+  background-color: #fc9f5b;
+  z-index: -1;
+}
+
+.live {
+  width: 100%;
+  background-color: #fbfff4;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.liveText {
+  margin-bottom: 20px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.partner {
+  width: 100%;
+  height: 220px;
+  background-color: #00a375;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.partnerName {
+  display: flex;
+  font-size: 40px;
+  justify-content: space-between;
+  color: #fbfff4;
+}
+
+@media screen and (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .one,
+  .two {
+    width: 100%;
+    margin: 0;
+    transform: skew(0);
+  }
+
+  .heroText {
+    transform: skew(0);
+  }
+
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+
+  .live {
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .partnerName {
+    flex-wrap: wrap;
+    font-size: 30px;
+  }
+
+  .cardContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardContainer > * {
+    margin-bottom: 20px;
+  }
+
+  .footer {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .live {
+    height: auto;
+  }
+
+  .partnerName {
+    font-size: 24px;
+  }
+}
