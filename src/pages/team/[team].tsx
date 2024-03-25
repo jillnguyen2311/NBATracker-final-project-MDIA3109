@@ -100,18 +100,17 @@ const Team: React.FC<TeamProps> = ({ playerStats, teamLogoUrl }) => {
                 minHeight: "250px",
               }}
             >
-              <h3 className="text-lg text-center mb-4">{data.Name}</h3>
+              <h3 className="text-lg mb-4">{data.Name}</h3>
               <div className="flex">
-                <div style={{ width: "100px", height: "100px", marginRight: "20px", backgroundColor: "#DDD", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  {/* Placeholder for player headshots */}
-                  <span>Image</span>
+                <div style={{ width: "200px", height: "100%", marginRight: "40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png"/>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <p>PPG: {data.Points.toFixed(2)}</p>
-                  <p>APG: {data.Assists.toFixed(2)}</p>
-                  <p>RPG: {data.Rebounds.toFixed(2)}</p>
-                  <p>SPG: {data.Steals.toFixed(2)}</p>
-                  <p>BPG: {data.BlockedShots.toFixed(2)}</p>
+                  <p>PPG: {data.Points.toFixed(1)}</p>
+                  <p>APG: {data.Assists.toFixed(1)}</p>
+                  <p>RPG: {data.Rebounds.toFixed(1)}</p>
+                  <p>SPG: {data.Steals.toFixed(1)}</p>
+                  <p>BPG: {data.BlockedShots.toFixed(1)}</p>
                 </div>
               </div>
             </div>
