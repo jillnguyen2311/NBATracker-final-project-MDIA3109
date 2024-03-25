@@ -1,10 +1,9 @@
-// Home.tsx
-
 import Nav from '../components/Nav'
 import Head from 'next/head'
 import Footer from '../components/Footer'
 import styles from '../styles/home.module.css'
 import Card from '../components/Card'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -12,25 +11,25 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <div className={styles.header}>
-        <Nav />
+
+      <Nav />
+
+      <div className={styles.heroTextContainer}>
+        <div className={styles.heroText}>
+          <h1 style={{ fontSize: "60px", color: "#FBFFF4", fontWeight: "bold", marginTop: "20rem" }}>
+            This Is Basketball
+          </h1>
+          <p style={{ fontSize: "20px", color: "#FBFFF4", maxWidth: "500px" }}>
+            Find the most accurate and latest information regarding basketball here at OddBall.
+            From live game odds to player and team stats, everything you will ever need to find will be here.
+          </p>
+        </div>
+        <Image className={styles.nikola} src="/images/nikola.png" alt="Basketball" width={300} height={200} />
       </div>
 
       <div className={styles.hero}>
-        <div className={styles.one}>
-          <div className={styles.contentContainer}>
-            <h1 style={{ fontSize: "60px", textAlign: "left", color: "#FBFFF4", fontWeight: "bold", transform: `skew(30deg)` }}>
-              This Is Basketball
-            </h1>
-            <p style={{ fontSize: "20px", textAlign: "left", color: "#FBFFF4", transform: `skew(30deg)`, maxWidth: "500px", paddingLeft: "70px" }}>
-              Find the most accurate and latest information regarding basketball here at OddBall.
-              From live game odds to player and team stats, everything you will ever need to find will be here.
-            </p>
-          </div>
-        </div>
-        <div className={styles.two}>
-          <img src="/images/nikola.png" alt="Player Nikola" className={`${styles.playerImage} ${styles.animation}`} />
-        </div>
+        <div className={styles.one}></div>
+        <div className={styles.two}></div>
       </div>
 
       <div className={styles.live}>
@@ -38,6 +37,7 @@ export default function Home() {
           <h1 style={{ fontSize: "50px", textAlign: "center", color: "#595959", fontWeight: "bold", marginBottom: "40px" }}>Live Games</h1>
         </div>
         <div className={styles.cardContainer}>
+          <Card />
           <Card />
           <Card />
         </div>
@@ -61,12 +61,11 @@ export default function Home() {
         <div className={styles.cardContainer}>
           <Card />
           <Card />
+          <Card />
         </div>
       </div>
 
-      <div className={styles.footer}>
-        <Footer />
-      </div>
+      <Footer />
     </main>
-  )
+  );
 }

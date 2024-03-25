@@ -1,14 +1,34 @@
+.heroTextContainer {
+  z-index: 1;
+  position: absolute;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 100%; 
+  flex-wrap: wrap;
+}
+
+.heroText {
+  padding-left: 20px;
+}
+
+
+.nikola{
+  width: 700px;
+  height: 850px;
+}
+
 .hero {
   width: 100%;
   display: flex;
   overflow: hidden;
   position: relative;
-  z-index: -1;
+  z-index: 0; 
 }
 
 .one,
 .two {
-  height: 100vh;
+  height: 90vh;
   width: calc(50% - 2.5vw);
   position: relative;
   display: flex;
@@ -98,55 +118,60 @@
   padding-left: 20px;
 }
 
-.playerImage {
-  width: 60%; 
-  height: auto;
-  transform: skew(30deg);
-}
-
-@keyframes slideRightToLeft {
-  from {
-    transform: skew(30deg) translateX(100%);
+@media screen and (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
   }
-  to {
-    transform: skew(30deg) translateX(0);
-  }
-}
 
-.animation {
-  animation: slideRightToLeft 2s ease-in-out;
+  .one,
+  .two {
+    width: 100%;
+    margin: 0;
+    transform: skew(0);
+  }
+
+  .heroText {
+    transform: skew(0); /* Reset skew transformation */
+  }
+
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+
+  .live {
+    height: auto;
+    align-items: flex-start; 
+  }
+
+  .partnerName {
+    flex-wrap: wrap;
+    font-size: 30px;
+  }
+
+  .cardContainer {
+    width: 100%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .cardContainer > * {
+    margin-bottom: 20px; 
+  }
+
+  .footer {
+    margin-top: 20px; 
+  }
 }
 
 @media screen and (max-width: 768px) {
-  /* Ensure full width for all parent elements */
-  .hero,
-  .one,
-  .two,
   .live,
-  .partner,
-  .main,
-  .header,
-  .footer
-  {
-    width: 200vw;
-    margin: 0;
-    padding: 0;
+  .partner {
+    height: auto;
   }
 
-  .contentContainer {
-    padding-left: 0;
-    padding-right: 0;
-    text-align: center; /* Center align content on smaller screens */
-  }
-
-  .one h1,
-  .one p {
-    text-align: center;
-  }
-
-  .playerImage {
-    width: 100%; /* Make player image occupy full width */
-    max-width: 300px; /* Limit maximum width of player image */
-    margin-top: 200px; /* Add some space between image and text */
+  .partnerName {
+    font-size: 24px; 
   }
 }
