@@ -44,7 +44,6 @@ export default function News() {
           setNews(mappedNews);
         } else {
           console.error('Response body is not an array:', articlesArray);
-
         }
       } catch (error) {
         console.error('Error fetching news:', error);
@@ -61,15 +60,19 @@ export default function News() {
       </Head>
       <Nav />
       <h1 className="text-black text-center font-bold text-4xl py-10 mb-10">Latest News</h1>
-      <div className="mx-auto max-w-4xl mb-8">
+      <div className="mx-auto max-w-7xl mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         {news.length > 0 ? (
           news.map((article, index) => (
-            <div key={index} className="border-4 border-green-500 bg-white rounded-lg shadow-md p-7 mb-8">
-              <h2 className="text-2xl font-semibold text-center">{article.title}</h2>
-              <img src={article.image} alt={article.title} className="mx-auto mb-4 rounded-lg" style={{ maxWidth: '100%', maxHeight: 'auto', display: 'block' }} />
-              <div className="mt-8 text-center">
-                <p className="text-gray-800">{article.title.slice(0, 100)}...</p>
-                <a href={article.url} className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Read more ➜</a>
+            <div key={index} className="flex flex-wrap border-4 border-green-500 bg-white rounded-lg shadow-md flex p-4 min-w-0 md:min-w-[450px]">
+              <div className="w-2/5">
+                <img src={article.image} alt={article.title} className="object-cover w-full h-full rounded-l-lg md:w-auto" />
+              </div>
+              <div className="w-3/5 p-6">
+                <h2 className="text-xl font-semibold text-center md:text-left">{article.title}</h2>
+                <p className="mt-4 text-gray-800">{article.title.slice(0, 100)}...</p>
+                <div className="mt-4 text-center md:text-left">
+                  <a href={article.url} className="text-orange-600 hover:underline" target="_blank" rel="noopener noreferrer">Read more ➜</a>
+                </div>
               </div>
             </div>
           ))
