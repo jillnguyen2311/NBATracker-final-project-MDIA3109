@@ -24,7 +24,7 @@ export default function Home() {
             From live game odds to player and team stats, everything you will ever need to find will be here.
           </p>
         </div>
-        <Image className={styles.nikola} src="/images/nikola.png" alt="Basketball" width={300} height={200} />
+        <Image className={styles.nikola} src="/images/legoat.png" alt="Basketball" width={1804} height={2700} />
       </div>
 
       <div className={styles.hero}>
