@@ -32,7 +32,7 @@ export default function Nav() {
         <nav className={styles.nav}>
             <div className={styles.navbar}>
                 <div className='bg-[#FBFFF4] flex flex-row w-full p-5'>
-                    <a href="/home">
+                    <a href="/">
                         <Image className={styles.space} src="/images/OddBall.png" alt="logo" width={150} height={150} />
                     </a>
                     <div className='absolute right-5 mb-5 max-[435px]:pt-1'>
@@ -41,7 +41,7 @@ export default function Nav() {
                             <a href="/sign-up" className={styles.navlink2}>Sign Up</a>
                         </li>
                         <li className={styles.premium}>
-                            <a href="" >Premium</a>
+                            <a href="/premium" >Premium</a>
                         </li>
                     </ul>
                     </div>                    
