@@ -3,6 +3,28 @@ import Link from "next/link";
 import Nav from "../../components/Nav";
 import Footer from '../../components/Footer';
 
+const lakersHeadshots: { [key: string]: string | undefined } = {
+  "LeBron James": "https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png",
+  "Colin Castleton": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630658.png",
+  "Max Christie": "https://cdn.nba.com/headshots/nba/latest/1040x760/1631108.png",
+  "Anthony Davis": "https://cdn.nba.com/headshots/nba/latest/1040x760/203076.png",
+  "Spencer Dinwiddie": "https://cdn.nba.com/headshots/nba/latest/1040x760/203915.png",
+  "Harry Giles III": "https://cdn.nba.com/headshots/nba/latest/1040x760/1628385.png",
+  "Rui Hachimura": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629060.png",
+  "Jaxson Hayes": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629637.png",
+  "D'Moi Hodge": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641793.png",
+  "Jalen Hood-Schifino": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641720.png",
+  "Maxwell Lewis": "https://cdn.nba.com/headshots/nba/latest/1040x760/1641721.png",
+  "Skylar Mays": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630219.png",
+  "Taurean Prince": "https://cdn.nba.com/headshots/nba/latest/1040x760/1627752.png",
+  "Austin Reaves": "https://cdn.nba.com/headshots/nba/latest/1040x760/1630559.png",
+  "Cam Reddish": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629629.png",
+  "D'Angelo Russell": "https://cdn.nba.com/headshots/nba/latest/1040x760/1626156.png",
+  "Jarred Vanderbilt": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629020.png",
+  "Gabe Vincent": "https://cdn.nba.com/headshots/nba/latest/1040x760/1629216.png",
+  "Christian Wood": "https://cdn.nba.com/headshots/nba/latest/1040x760/1626174.png"
+};
+
 interface PlayerStat {
   PlayerID: number;
   Name: string;
@@ -100,18 +122,17 @@ const Team: React.FC<TeamProps> = ({ playerStats, teamLogoUrl }) => {
                 minHeight: "250px",
               }}
             >
-              <h3 className="text-lg text-center mb-4">{data.Name}</h3>
+              <h3 className="text-lg mb-4">{data.Name}</h3>
               <div className="flex">
-                <div style={{ width: "100px", height: "100px", marginRight: "20px", backgroundColor: "#DDD", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  {/* Placeholder for player headshots */}
-                  <span>Image</span>
+                <div style={{ width: "200px", height: "100%", marginRight: "40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src={lakersHeadshots[data.Name] || "https://cdn.nba.com/headshots/nba/latest/1040x760/1629029.png"} alt={data.Name} />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <p>PPG: {data.Points.toFixed(2)}</p>
-                  <p>APG: {data.Assists.toFixed(2)}</p>
-                  <p>RPG: {data.Rebounds.toFixed(2)}</p>
-                  <p>SPG: {data.Steals.toFixed(2)}</p>
-                  <p>BPG: {data.BlockedShots.toFixed(2)}</p>
+                  <p>PPG: {data.Points.toFixed(1)}</p>
+                  <p>APG: {data.Assists.toFixed(1)}</p>
+                  <p>RPG: {data.Rebounds.toFixed(1)}</p>
+                  <p>SPG: {data.Steals.toFixed(1)}</p>
+                  <p>BPG: {data.BlockedShots.toFixed(1)}</p>
                 </div>
               </div>
             </div>
