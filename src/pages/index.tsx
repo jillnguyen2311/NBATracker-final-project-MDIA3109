@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main style={{ fontFamily: "Almarai, sans-serif" }}>
+    <main className={styles.main} style={{ fontFamily: "Almarai, sans-serif" }}>
       <Head>
         <title>Home</title>
       </Head>
@@ -68,4 +68,4 @@ export default function Home() {
       <Footer />
     </main>
   );
-}
+};

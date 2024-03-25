@@ -1,10 +1,15 @@
+.main{
+  margin: 0;
+  padding: 0;
+}
+
 .heroTextContainer {
-  z-index: 1;
+  z-index: -1;
   position: absolute;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-  width: 100%; 
+  width: 100%;
   flex-wrap: wrap;
 }
 
@@ -12,8 +17,7 @@
   padding-left: 20px;
 }
 
-
-.nikola{
+.nikola {
   width: 700px;
   height: 850px;
 }
@@ -23,7 +27,7 @@
   display: flex;
   overflow: hidden;
   position: relative;
-  z-index: 0; 
+  z-index: -2;
 }
 
 .one,
@@ -37,14 +41,14 @@
 }
 
 .one {
-  background-color: #00A375;
+  background-color: #00a375;
   transform: skew(-30deg);
   margin-right: 2.5vw;
   z-index: 0;
 }
 
 .two {
-  background-color: #FC9F5B;
+  background-color: #fc9f5b;
   transform: skew(-30deg);
   margin-left: 2.5vw;
   z-index: 0;
@@ -59,7 +63,7 @@
   min-width: 260px;
   min-height: 450px;
   height: 100%;
-  background-color: #00A375;
+  background-color: #00a375;
   z-index: -1;
 }
 
@@ -72,13 +76,13 @@
   min-width: 260px;
   min-height: 450px;
   height: 100%;
-  background-color: #FC9F5B;
+  background-color: #fc9f5b;
   z-index: -1;
 }
 
 .live {
   width: 100%;
-  background-color: #FBFFF4;
+  background-color: #fbfff4;
   height: 700px;
   display: flex;
   flex-direction: column;
@@ -100,7 +104,7 @@
 .partner {
   width: 100%;
   height: 220px;
-  background-color: #00A375;
+  background-color: #00a375;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -109,13 +113,7 @@
   display: flex;
   font-size: 40px;
   justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
-  color: #FBFFF4;
-}
-
-.contentContainer {
-  padding-left: 20px;
+  color: #fbfff4;
 }
 
 @media screen and (max-width: 1024px) {
@@ -131,7 +129,7 @@
   }
 
   .heroText {
-    transform: skew(0); /* Reset skew transformation */
+    transform: skew(0);
   }
 
   .hero::before,
@@ -141,7 +139,7 @@
 
   .live {
     height: auto;
-    align-items: flex-start; 
+    align-items: flex-start;
   }
 
   .partnerName {
@@ -150,28 +148,27 @@
   }
 
   .cardContainer {
-    width: 100%; 
+    width: 100%;
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
   }
 
   .cardContainer > * {
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 
   .footer {
-    margin-top: 20px; 
+    margin-top: 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .live,
-  .partner {
+  .live {
     height: auto;
   }
 
   .partnerName {
-    font-size: 24px; 
+    font-size: 24px;
   }
 }
