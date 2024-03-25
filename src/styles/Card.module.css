@@ -32,3 +32,10 @@
     font-weight: 700;
     font-size: 2rem;
 }
+
+@media screen and (max-width: 768px) {
+    .Card {
+        width: 90%;
+        margin: 16px auto;
+    }
+}
