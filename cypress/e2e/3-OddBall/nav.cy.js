@@ -19,19 +19,27 @@ describe('Navigation', () => {
         cy.url().should('include', '/news');
     })
 
-    it('should navigate to player odds', () => {
-        cy.visit('https://oddball-nba-tracker.vercel.app/news');
-
-        cy.get('a[href="/player-odds"]').click();
-
-        cy.url().should('include', '/player-odds');
-    })
-
     it('should navigate to season stats', () => {
-        cy.visit('https://oddball-nba-tracker.vercel.app/player-odds');
+        cy.visit('https://oddball-nba-tracker.vercel.app/news');
 
         cy.get('a[href="/season-stats"]').click();
 
         cy.url().should('include', '/season-stats');
+    })
+
+    it('should navigate to about', () => {
+        cy.visit('https://oddball-nba-tracker.vercel.app/season-stats');
+
+        cy.get('a[href="/about"]').click();
+
+        cy.url().should('include', '/about');
+    })
+
+    it('should navigate to sign up', () => {
+        cy.visit('https://oddball-nba-tracker.vercel.app/about');
+
+        cy.get('a[href="/sign-up"]').click();
+
+        cy.url().should('include', '/sign-up');
     })
 })
