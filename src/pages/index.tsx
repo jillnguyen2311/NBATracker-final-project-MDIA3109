@@ -238,8 +238,8 @@ export default function Home() {
                 <img src={article.image} alt={article.title} className="object-cover w-full h-full rounded-l-lg md:w-auto" />
               </div>
               <div className="w-3/5 p-6">
-                <h2 className="text-xl font-semibold text-center md:text-left">{article.title}</h2>
-                <p className="mt-4 text-gray-800">{article.title.slice(0, 100)}...</p>
+                <h2 className="text-xl font-semibold text-center md:text-left">{article.title.slice(0, 50)}</h2>
+                <p className="mt-4 text-gray-800">{article.title.slice(0, 300)}...</p>
                 <div className="mt-4 text-center md:text-left">
                   <a href={article.url} className="text-orange-600 hover:underline" target="_blank" rel="noopener noreferrer">Read more ➜</a>
                 </div>
