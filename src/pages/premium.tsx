@@ -51,7 +51,15 @@ export default function PremiumPage() {
           splineScene="https://prod.spline.design/9YgA-in5C8QtAi-5/scene.splinecode"
         />
       </div>
-
+      <h1 className='text-center text-6xl font-bold mb-10 mt-5 xl:text-7xl max-[420px]:text-4xl'>Did you know?</h1>
+      <p className='text-center mb-2 text-2xl underline xl:text-3xl max-[420px]:text-xl'>According to Statistics Canada.</p>
+      <p className='text-center text-lg mb-8 xl:text-xl max-[420px]:text-base'>64% of Canadians aged 15 or older <br></br> reported gambling at least once last year.</p>
+      <div className="chart">
+  <div className="center">
+    <div className="label">64%
+</div>
+  </div>
+</div>
       <SubBanner />
       <NewsletterSection />
       <Footer />
