@@ -114,6 +114,7 @@
   font-size: 40px;
   justify-content: space-between;
   color: #fbfff4;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 1024px) {
