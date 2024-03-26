@@ -21,10 +21,10 @@ interface TeamsWithStatsProps {
 export async function getStaticProps(): Promise<{ props: TeamsWithStatsProps; revalidate: number }> {
 
     const season = new Date().getFullYear();
-    const resTeams = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=8510cb2ee7e843c18bb57dda092bc77a');
+    const resTeams = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=08e042cd58c742ba8717fea9c6af6c40');
     const teams = await resTeams.json();
 
-    const resStats = await fetch(`https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/${season}?key=8510cb2ee7e843c18bb57dda092bc77a`);
+    const resStats = await fetch(`https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/${season}?key=08e042cd58c742ba8717fea9c6af6c40`);
     const teamStats = await resStats.json();
     const limitedTeams = teams.slice(0, 30);
 
