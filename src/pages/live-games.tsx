@@ -65,7 +65,7 @@ export default function LiveGames() {
             const today = new Date().toISOString().slice(0, 10);
             const formattedDate = today.toUpperCase().replace('-', '-').replace('-', '-');
 
-            const url = `https://api.sportsdata.io/v3/nba/scores/json/GamesByDate/${formattedDate}?key=8510cb2ee7e843c18bb57dda092bc77a`;
+            const url = `https://api.sportsdata.io/v3/nba/scores/json/GamesByDate/${formattedDate}?key=08e042cd58c742ba8717fea9c6af6c40`;
 
             try {
                 const response = await axios.get(url);
@@ -78,7 +78,7 @@ export default function LiveGames() {
 
         const fetchTeamLogos = async () => {
             try {
-                const response = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=8510cb2ee7e843c18bb57dda092bc77a');
+                const response = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=08e042cd58c742ba8717fea9c6af6c40');
                 const teams = await response.json();
 
                 if (Array.isArray(teams)) {
@@ -97,7 +97,7 @@ export default function LiveGames() {
 
         const checkLiveGames = async () => {
             try {
-                const response = await axios.get('https://api.sportsdata.io/v3/nba/scores/json/AreAnyGamesInProgress?key=8510cb2ee7e843c18bb57dda092bc77a');
+                const response = await axios.get('https://api.sportsdata.io/v3/nba/scores/json/AreAnyGamesInProgress?key=08e042cd58c742ba8717fea9c6af6c40');
                 setIsLive(response.data);
             } catch (error) {
                 console.error('Error checking live games:', error);
