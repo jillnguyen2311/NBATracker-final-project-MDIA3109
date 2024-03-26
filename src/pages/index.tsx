@@ -215,15 +215,30 @@ export default function Home() {
       </div>
 
       <div className={styles.partner}>
-        <h1 style={{ fontSize: "50px", textAlign: "center", color: "#FBFFF4", fontWeight: "bold", marginBottom: "20px" }}>Partners</h1>
-        <div className={styles.partnerName}>
-          <h2>Edge</h2>
-          <h2>NBA</h2>
-          <h2>T-Mobile</h2>
-          <h2>Rogers</h2>
-          <h2>ESPN</h2>
-        </div>
-      </div>
+  <h1 style={{ fontSize: "50px", textAlign: "center", color: "#FBFFF4", fontWeight: "bold", marginBottom: "20px" }}>Partners</h1>
+  <div className={styles.partnerName}>
+    <div className={styles.partnerColumn}>
+      <h2>Edge</h2>
+      <Image src="/images/edge.png" alt="Edge Logo" width={100} height={100} />
+    </div>
+    <div className={styles.partnerColumn}>
+      <h2>NBA</h2>
+      <Image src="/images/nba.jpg" alt="NBA Logo" width={100} height={100} />
+    </div>
+    <div className={styles.partnerColumn}>
+      <h2>T-Mobile</h2>
+      <Image src="/images/tmobile.png" alt="T-Mobile Logo" width={100} height={100} />
+    </div>
+    <div className={styles.partnerColumn}>
+      <h2>Rogers</h2>
+      <Image src="/images/rogers.png" alt="Rogers Logo" width={100} height={100} />
+    </div>
+    <div className={styles.partnerColumn}>
+      <h2>ESPN</h2>
+      <Image src="/images/espn.jpg" alt="ESPN Logo" width={100} height={100} />
+    </div>
+  </div>
+</div>
 
       <div className={styles.live}>
         <div className={styles.liveText}>

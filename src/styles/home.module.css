@@ -105,7 +105,6 @@
 
 .partner {
   width: 100%;
-  height: 220px;
   background-color: #00a375;
   margin-bottom: 20px;
   padding: 1rem;
@@ -118,6 +117,13 @@
   justify-content: space-between;
   color: #fbfff4;
   flex-wrap: wrap;
+}
+
+.partnerColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1024px) {
