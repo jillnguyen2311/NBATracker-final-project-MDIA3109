@@ -192,6 +192,14 @@ export default function Home() {
             <div className="flex mx-6 mb-6">
               <Link href="/live-games" key={game.GameID} passHref>
                 <div key={game.GameID} className={`border-4 ${isLive ? 'border-customGreen' : 'border-customOrange'} rounded-lg shadow-lg p-6 bg-white flex flex-col items-center text-center gap-4`} style={{ width: "100%", justifyContent: "space-evenly" }}>
+                  <div>
+                    {new Date(game.DateTime).toLocaleString('en-US', {
+                      weekday: 'long',
+                      hour: 'numeric',
+                      minute: 'numeric',
+                      hour12: true
+                    })}
+                  </div>
                   <div className="flex items-center justify-center gap-8 sm:gap-24 font-bold text-xl">
                     <span className={`px-3 py-1 ${isLive ? 'bg-customGreen' : 'bg-customOrange'} rounded-full`} style={{ borderRadius: '400px', fontSize: '18px' }}>{game.HomeTeamMoneyLine}</span>
                     <span style={{ fontSize: '20px', fontWeight: 'bold' }}>ODDS</span>

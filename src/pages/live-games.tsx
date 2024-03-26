@@ -83,7 +83,7 @@ export default function LiveGames() {
 
                 if (Array.isArray(teams)) {
                     const logos = teams.reduce((acc: { [key: string]: string }, team: any) => {
-                        acc[team.Key] = team.WikipediaLogoUrl; // Use 'Key' if it's unique for each team
+                        acc[team.Key] = team.WikipediaLogoUrl;
                         return acc;
                     }, {});
                     setTeamLogos(logos);
@@ -122,6 +122,14 @@ export default function LiveGames() {
             <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-12 mx-10 my-20">
                 {games.map((game) => (
                     <div key={game.GameID} className={`border-4 ${isLive ? 'border-customGreen' : 'border-customOrange'} rounded-lg shadow-lg p-6 bg-white flex flex-col items-center text-center gap-4`} style={{ width: "100%", justifyContent: "space-evenly" }}>
+                        <div>
+                            {new Date(game.DateTime).toLocaleString('en-US', {
+                                weekday: 'long',
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                hour12: true
+                            })}
+                        </div>
                         <div className="flex items-center justify-center gap-8 sm:gap-24 font-bold text-xl">
                             <span className={`px-3 py-1 ${isLive ? 'bg-customGreen' : 'bg-customOrange'} rounded-full`} style={{ borderRadius: '400px', fontSize: '18px' }}>{game.HomeTeamMoneyLine}</span>
                             <span style={{ fontSize: '20px', fontWeight: 'bold' }}>ODDS</span>
