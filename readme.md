@@ -9,6 +9,12 @@ A live NBA sports tracking app that tracks the game scores and other details whi
 
 [Live Sports Odds API](https://rapidapi.com/theoddsapi/api/live-sports-odds/)
 
+[Nba News API](https://rapidapi.com/tank01/api/tank01-fantasy-stats)
+
+## Chart Data
+
+[Statistics Canada](https://www150.statcan.gc.ca/n1/pub/11-627-m/11-627-m2022041-eng.htm)
+
 ## Team Members
 - Elijah Chan
 - Jesse Welk
