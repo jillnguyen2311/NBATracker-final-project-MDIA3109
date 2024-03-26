@@ -83,11 +83,11 @@
 .live {
   width: 100%;
   background-color: #fbfff4;
-  height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-bottom: 30px;
 }
 
 .liveText {

@@ -7,6 +7,7 @@ import Card from '../components/Card'
 import Image from 'next/image'
 import Link from 'next/link';
 import axios from 'axios';
+import { Article } from './news';
 
 interface Game {
   GameID: number;
@@ -114,6 +115,48 @@ export default function Home() {
     return () => clearInterval(liveGamesCheckInterval);
   }, []);
 
+  const [news, setNews] = useState<Article[]>([]);
+
+  useEffect(() => {
+    async function fetchNews() {
+      try {
+        const apiUrl = 'https://tank01-fantasy-stats.p.rapidapi.com/getNBANews';
+        const rapidApiKey = '708227765cmshd45426b5899e082p15bca7jsn871aa32efb19';
+
+        const options = {
+          method: 'GET',
+          url: apiUrl,
+          params: {
+            recentNews: 'true',
+            maxItems: '2' 
+          },
+          headers: {
+            'X-RapidAPI-Key': rapidApiKey,
+            'X-RapidAPI-Host': 'tank01-fantasy-stats.p.rapidapi.com'
+          }
+        };
+
+        const response = await axios.request(options);
+        const articlesArray = response.data.body;
+
+        if (Array.isArray(articlesArray)) {
+          const mappedNews: Article[] = articlesArray.map((item: any) => ({
+            title: item.title,
+            url: item.link,
+            image: item.image
+          }));
+          setNews(mappedNews);
+        } else {
+          console.error('Response body is not an array:', articlesArray);
+        }
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      }
+    }
+
+    fetchNews();
+  }, []);
+
   return (
     <main className={styles.main} style={{ fontFamily: "Almarai, sans-serif" }}>
       <Head>
@@ -186,9 +229,27 @@ export default function Home() {
         <div className={styles.liveText}>
           <h1 style={{ fontSize: "50px", textAlign: "center", color: "#595959", fontWeight: "bold", marginBottom: "40px" }}>Current News</h1>
         </div>
-        <div className={styles.cardContainer}>
 
-        </div>
+        <div className="mx-auto max-w-7xl mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {news.length > 0 ? (
+          news.map((article, index) => (
+            <div key={index} className="flex flex-wrap border-4 border-green-500 bg-white rounded-lg shadow-md flex p-4 min-w-0 md:min-w-[450px]">
+              <div className="w-2/5">
+                <img src={article.image} alt={article.title} className="object-cover w-full h-full rounded-l-lg md:w-auto" />
+              </div>
+              <div className="w-3/5 p-6">
+                <h2 className="text-xl font-semibold text-center md:text-left">{article.title}</h2>
+                <p className="mt-4 text-gray-800">{article.title.slice(0, 100)}...</p>
+                <div className="mt-4 text-center md:text-left">
+                  <a href={article.url} className="text-orange-600 hover:underline" target="_blank" rel="noopener noreferrer">Read more ➜</a>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center">No news available</p>
+        )}
+      </div>
       </div>
 
       <Footer />
