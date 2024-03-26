@@ -46,12 +46,12 @@ export async function getServerSideProps(context: { params: { team: string; }; }
   const { team } = context.params;
   const season = new Date().getFullYear();
 
-  const resTeams = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=8510cb2ee7e843c18bb57dda092bc77a');
+  const resTeams = await fetch('https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=08e042cd58c742ba8717fea9c6af6c40');
   const teams = await resTeams.json() as Team[];
 
   const teamInfo = teams.find(t => t.Key === team);
 
-  const resPlayerStats = await fetch(`https://api.sportsdata.io/v3/nba/stats/json/PlayerSeasonStatsByTeam/${season}/${team}?key=8510cb2ee7e843c18bb57dda092bc77a`);
+  const resPlayerStats = await fetch(`https://api.sportsdata.io/v3/nba/stats/json/PlayerSeasonStatsByTeam/${season}/${team}?key=08e042cd58c742ba8717fea9c6af6c40`);
   const playerStats: PlayerStat[] = await resPlayerStats.json();
 
   return {
